@@ -30,6 +30,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Nome do comando
-        run: echo SERVER
+        run: echo "$SERVER"
 
       
