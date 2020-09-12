@@ -22,11 +22,14 @@ jobs:
           echo test, and deploy your project.
   env-test:
     runs-on: ubuntu-latest
+    
+    env:
+        SERVER: $TEST_SERVER
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Nome do comando
-        run: echo $TEST_SERVER
+        run: echo SERVER
 
       
