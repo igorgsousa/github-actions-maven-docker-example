@@ -13,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: Show current dir
+        run: la -a
       - name: Dir change to -> /maven-github-action
         run: |
           cd /maven-github-action
