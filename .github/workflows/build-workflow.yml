@@ -21,7 +21,7 @@ jobs:
            
       - name: Get version
         run: |
-          versionVar=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout)
+          versionVar=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout --file ./maven-github-action/pom.xml )
           echo "::set-env name=artifactVersion::$versionVar"
 
       - name: Show version
