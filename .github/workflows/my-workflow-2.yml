@@ -6,7 +6,18 @@ on:
       DeployVersion:
         description: 'Deploy version'     
         required: true
-      Development:
+      DevelopmentVersion:
         description: 'Development version'     
-        required: true  
+        required: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Show variables 
+        run: |
+              echo "${{ github.event.inputs.DeployVersion }}"          
+              echo "${{ github.event.inputs.DevelopmentVersion }}"          
         
