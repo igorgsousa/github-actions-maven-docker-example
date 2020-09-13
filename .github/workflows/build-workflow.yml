@@ -18,12 +18,16 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      
+           
+      - name: Get version
+        run: echo '::set-env artifactVersion=Opa'
+
       - name: Build with Maven
-        run: mvn -B package --file ./maven-github-action/pom.xml
+        run: mvn -B package --file ./maven-github-action/pom.xml  
 
       - uses: actions/upload-artifact@v2
         with:
+          name: ${{artifactVersion}}
           path: ./maven-github-action/target/app.jar          
 
       
