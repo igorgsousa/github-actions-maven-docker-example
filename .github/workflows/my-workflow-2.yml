@@ -18,6 +18,6 @@ jobs:
 
       - name: Show variables 
         run: |
-              echo "${{ github.event.inputs.DeployVersion }}"          
-              echo "${{ github.event.inputs.DevelopmentVersion }}"          
+          echo "${{ github.event.inputs.DeployVersion }}"          
+          echo "${{ github.event.inputs.DevelopmentVersion }}"          
         
