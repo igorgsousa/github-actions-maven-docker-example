@@ -30,7 +30,7 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: echo '$artifactVersion'
+          name: echo $artifactVersion
           path: ./maven-github-action/target/app.jar          
 
       
