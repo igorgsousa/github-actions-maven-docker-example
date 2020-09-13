@@ -1,0 +1,12 @@
+name: ManualTrigger
+
+on: 
+  workflow_dispatch:
+    inputs:
+      DeployVersion:
+        description: 'Deploy version'     
+        required: true
+      Development:
+        description: 'Development version'     
+        required: true  
+        
