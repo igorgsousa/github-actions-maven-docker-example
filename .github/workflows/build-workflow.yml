@@ -20,7 +20,7 @@ jobs:
           java-version: 1.8
            
       - name: Get version
-        run: echo "::set-env name=artifactVersion::opa"
+        run: echo "::set-env name=artifactVersion::mvn help:evaluate -Dexpression='project.version' -q -DforceStdout "
 
       - name: Show version
         run: echo $artifactVersion  
