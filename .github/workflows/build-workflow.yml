@@ -20,7 +20,7 @@ jobs:
           java-version: 1.8
            
       - name: Get version
-        run: echo '::set-env artifactVersion=Opa'
+        run: echo "::set-env name=artifactVersion::opa"
 
       - name: Build with Maven
         run: mvn -B package --file ./maven-github-action/pom.xml  
