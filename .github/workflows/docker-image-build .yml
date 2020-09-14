@@ -1,0 +1,24 @@
+name: DockerImageBuild
+
+on: 
+  workflow_dispatch:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get version and name
+        run: |
+          versionVar=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout --file ./maven-github-action/pom.xml )
+          echo "::set-env name=artifactVersion::$versionVar"        
+          artifactIdVar=$(mvn help:evaluate -Dexpression='project.artifactId' -q -DforceStdout --file ./maven-github-action/pom.xml )
+          echo "::set-env name=artifactId::$artifactIdVar"
+
+      - name: Show version and artifact id
+        run: |
+          echo $artifactVersion          
+          echo $artifactIdVar          
+        
