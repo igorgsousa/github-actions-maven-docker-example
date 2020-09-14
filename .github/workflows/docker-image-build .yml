@@ -18,7 +18,6 @@ jobs:
           echo "::set-env name=artifactId::$artifactIdVar"
 
       - name: Show version and artifact id
-        run: |
-          echo $artifactVersion          
-          echo $artifactIdVar          
+        run:  echo $artifactIdVar  $artifactVersion          
+          
         
