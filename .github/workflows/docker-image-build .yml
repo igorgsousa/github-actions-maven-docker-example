@@ -37,7 +37,7 @@ jobs:
           ECR_REPOSITORY: ${{ env.artifactId }}
           IMAGE_TAG: ${{ env.artifactVersion }}
         run: |
-          docker build . -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
               
           
