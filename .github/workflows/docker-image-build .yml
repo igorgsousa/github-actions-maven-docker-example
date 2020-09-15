@@ -18,6 +18,27 @@ jobs:
           echo "::set-env name=artifactId::$artifactIdVar"
 
       - name: Show version and artifact id
-        run:  echo $artifactId  $artifactVersion          
+        run:  echo $artifactId  $artifactVersion
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.artifactId }}
+          IMAGE_TAG: ${{ env.artifactVersion }}
+        run: |
+          docker build --file=./maven-github-action/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+              
           
         
