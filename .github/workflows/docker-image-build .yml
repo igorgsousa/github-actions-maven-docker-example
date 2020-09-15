@@ -20,6 +20,15 @@ jobs:
       - name: Show version and artifact id
         run:  echo $artifactId  $artifactVersion
 
+      - name: Set up JDK 1.8
+      
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Build with Maven
+        run: mvn -B package --file ./maven-github-action/pom.xml  
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
