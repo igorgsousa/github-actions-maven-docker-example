@@ -20,11 +20,6 @@ jobs:
       - name: Show version and artifact id
         run:  echo $artifactId  $artifactVersion      
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: maven-github-action-${{ env.artifactVersion }} 
-          path: ./maven-github-action/target/app.jar   
-
       - name: Set up JDK 1.8
       
         uses: actions/setup-java@v1
@@ -33,6 +28,11 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B package --file ./maven-github-action/pom.xml  
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: maven-github-action-${{ env.artifactVersion }} 
+          path: ./maven-github-action/target/app.jar     
 
   buildDokerImage:
     runs-on: ubuntu-latest
