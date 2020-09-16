@@ -30,7 +30,7 @@ jobs:
         run: mvn -B package --file ./maven-github-action/pom.xml  
 
       - name: Save version
-        run: cat $artifactVersion > versions
+        run: echo $artifactVersion > versions
 
       - uses: actions/upload-artifact@v2
         with:
