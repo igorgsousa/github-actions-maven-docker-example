@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     
 jobs:
-  setEnv:
+  buildArtifact:
     runs-on: ubuntu-latest  
 
     steps:
@@ -18,15 +18,7 @@ jobs:
           echo "::set-env name=artifactId::$artifactIdVar"
 
       - name: Show version and artifact id
-        run:  echo $artifactId  $artifactVersion    
-
-  buildArtifact:
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Show version and artifact id
-        run:  echo $artifactId  $artifactVersion    
+        run:  echo $artifactId  $artifactVersion      
 
       - uses: actions/upload-artifact@v2
         with:
@@ -44,6 +36,8 @@ jobs:
 
   buildDokerImage:
     runs-on: ubuntu-latest
+
+    needs: [buildArtifact]
 
     steps:
 
