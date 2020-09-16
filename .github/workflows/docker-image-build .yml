@@ -52,7 +52,7 @@ jobs:
       - name: Download latest build
         uses: actions/download-artifact@v2
         with:
-          name: maven-github-action-${{ env.artifactVersion }}  
+          name: versions  
       
       - name: Show downloaded artifact
         run: ls -a     
