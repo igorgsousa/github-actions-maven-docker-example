@@ -48,6 +48,7 @@ jobs:
     needs: [buildArtifact]
 
     steps:
+      - uses: actions/checkout@v2
 
       - name: Download latest build
         uses: actions/download-artifact@v2
